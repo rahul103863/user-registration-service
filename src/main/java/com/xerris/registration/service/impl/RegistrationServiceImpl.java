@@ -39,7 +39,12 @@ public class RegistrationServiceImpl implements RegistrationService{
 		RegistrationStatus registrationStatus = new RegistrationStatus();
 		String responseMessage = null;
 		String regStatus = null;
-			
+		
+		if(!validateIpAddress(user.getUserIp())) {
+			registrationStatus.setMessage(configUtility.getProperty("user.not.eligible"));
+			registrationStatus.setStatus("Failed");
+			return registrationStatus;
+		}
 		ResponseEntity<GeoLocationDetail> responseEntity = 
 		   new RestTemplate().getForEntity(ipApiUrl, GeoLocationDetail.class, user.getUserIp());
 		GeoLocationDetail geoLocationDetail = responseEntity.getBody();
@@ -50,7 +55,7 @@ public class RegistrationServiceImpl implements RegistrationService{
 				regStatus = "Success";
 			} else {
 				responseMessage = configUtility.getProperty("user.not.eligible");
-				regStatus = "Falied";
+				regStatus = "Failed";
 			}
 		} else {
 			responseMessage = configUtility.getProperty("password.policy.error");
@@ -64,6 +69,14 @@ public class RegistrationServiceImpl implements RegistrationService{
 	private boolean validatePasswordPolicy(String password) {
 		log.info("Inside validatePasswordPolicy method");
 		return PasswordPolicyValidator.isValid(password, configUtility.getProperty("password.pattern"));
+	}
+	
+	private boolean validateIpAddress(String ip) {
+		
+		if(ip == null  || ip.length() == 0) {
+			return false;
+		}
+		return true;
 	}
 
 }
