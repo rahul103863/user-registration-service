@@ -1,4 +1,4 @@
-package com.xerris.registration.entity;
+package com.myorg.registration.entity;
 
 import java.util.Objects;
 

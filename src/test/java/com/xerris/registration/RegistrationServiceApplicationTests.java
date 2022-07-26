@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.xerris.registration.util.ConfigUtility;
+import com.myorg.registration.util.ConfigUtility;
 
 @SpringBootTest
 @AutoConfigureMockMvc

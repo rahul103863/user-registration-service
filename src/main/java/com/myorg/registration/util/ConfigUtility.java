@@ -1,4 +1,4 @@
-package com.xerris.registration.util;
+package com.myorg.registration.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.xerris.registration.controller;
+package com.myorg.registration.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.xerris.registration.entity.RegistrationStatus;
-import com.xerris.registration.entity.User;
-import com.xerris.registration.service.RegistrationService;
+import com.myorg.registration.entity.RegistrationStatus;
+import com.myorg.registration.entity.User;
+import com.myorg.registration.service.RegistrationService;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,4 +1,4 @@
-package com.xerris.registration.service.impl;
+package com.myorg.registration.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,17 +6,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
-import com.xerris.registration.controller.RegistrationController;
-import com.xerris.registration.entity.GeoLocationDetail;
-import com.xerris.registration.entity.RegistrationStatus;
-import com.xerris.registration.entity.User;
-import com.xerris.registration.service.RegistrationService;
-import com.xerris.registration.util.ConfigUtility;
-import com.xerris.registration.util.PasswordPolicyValidator;
+import com.myorg.registration.controller.RegistrationController;
+import com.myorg.registration.entity.GeoLocationDetail;
+import com.myorg.registration.entity.RegistrationStatus;
+import com.myorg.registration.entity.User;
+import com.myorg.registration.service.RegistrationService;
+import com.myorg.registration.util.ConfigUtility;
+import com.myorg.registration.util.PasswordPolicyValidator;
 
 import lombok.Value;
 
 import java.text.MessageFormat;
+import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,6 +64,9 @@ public class RegistrationServiceImpl implements RegistrationService{
 		}
 		registrationStatus.setMessage(responseMessage);
 		registrationStatus.setStatus(regStatus);
+		if (regStatus.equalsIgnoreCase("Success")) {
+			registrationStatus.setUuid(UUID.randomUUID().toString());
+		}
 		return registrationStatus;
 	}
 	

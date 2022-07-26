@@ -1,4 +1,4 @@
-package com.xerris.registration.entity;
+package com.myorg.registration.entity;
 
 import java.util.Objects;
 
@@ -6,6 +6,7 @@ public class RegistrationStatus {
 	
 	private String message;
 	private String status;
+	private String uuid;
 	
 	public String getMessage() {
 		return message;
@@ -20,9 +21,15 @@ public class RegistrationStatus {
 		this.status = status;
 	}
 	
+	public String getUuid() {
+		return uuid;
+	}
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(message, status);
+		return Objects.hash(message, status, uuid);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -33,6 +40,6 @@ public class RegistrationStatus {
 		if (getClass() != obj.getClass())
 			return false;
 		RegistrationStatus other = (RegistrationStatus) obj;
-		return Objects.equals(message, other.message) && Objects.equals(status, other.status);
+		return Objects.equals(message, other.message) && Objects.equals(status, other.status) && Objects.equals(uuid, other.uuid);
 	}
 }

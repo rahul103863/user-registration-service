@@ -1,4 +1,4 @@
-package com.xerris.registration.util;
+package com.myorg.registration.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
